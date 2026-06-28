@@ -379,14 +379,17 @@ def make_gauge(score, min_val=300, max_val=900):
         mode="gauge+number",
         value=score,
         number={
-            'font': {'size': 32, 'color': '#E2E8F0', 'family': 'Space Grotesk'},
-            'suffix': f'<br><span style="font-size:0.75rem;color:#64748B;font-family:Inter">{label}</span>'
+            'font': {'size': 36, 'color': '#E2E8F0', 'family': 'Space Grotesk'},
+        },
+        title={
+            'text': label,
+            'font': {'size': 13, 'color': bar_color, 'family': 'Inter'}
         },
         gauge={
             'axis': {
                 'range': [min_val, max_val],
-                'tickwidth': 0,
-                'tickcolor': 'transparent',
+                'tickwidth': 1,
+                'tickcolor': 'rgba(71,85,105,0.4)',
                 'tickfont': {'color': '#334155', 'size': 9},
                 'nticks': 5
             },
@@ -407,8 +410,8 @@ def make_gauge(score, min_val=300, max_val=900):
     ))
 
     fig.update_layout(
-        height=200,
-        margin=dict(t=20, b=0, l=20, r=20),
+        height=210,
+        margin=dict(t=20, b=10, l=20, r=20),
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         font={'color': '#64748B', 'family': 'Inter'},
