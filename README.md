@@ -97,9 +97,9 @@ http://localhost:8501
 
 Aplikasi ini telah di-deploy dan dapat diakses secara publik melalui Streamlit Community Cloud:
 
-🔗 **[Buka Aplikasi →](https://share.streamlit.io)**
+🔗 **[Buka Aplikasi →](https://loan-approval-app-cqrqdcgtvq4izszjvy3req.streamlit.app/)**
 
-> Ganti link di atas dengan URL deployment kamu setelah berhasil deploy.
+
 
 ---
 
