@@ -686,33 +686,35 @@ if predict_btn:
         st.plotly_chart(fig_donut, use_container_width=True, config={"displayModeBar": False})
 
         # ── Horizontal bar: breakdown aset ──
-        aset_labels = ['Properti', 'Komersial', 'Mewah', 'Tabungan']
-        aset_values = [residential_assets_value, commercial_assets_value,
-                       luxury_assets_value, bank_asset_value]
-        aset_colors = ['#0EA5E9', '#6366F1', '#8B5CF6', '#EC4899']
+        aset_labels = ['Tabungan', 'Mewah', 'Komersial', 'Properti']
+        aset_values = [bank_asset_value, luxury_assets_value,
+                       commercial_assets_value, residential_assets_value]
+        aset_colors = ['#EC4899', '#8B5CF6', '#6366F1', '#0EA5E9']
 
-        fig_bar = go.Figure()
-        for lbl, val, clr in zip(aset_labels, aset_values, aset_colors):
-            fig_bar.add_trace(go.Bar(
-                name=lbl,
-                x=[val],
-                y=[lbl],
-                orientation='h',
-                marker=dict(color=clr, line=dict(width=0)),
-                hovertemplate=f'{lbl}: Rp %{{x:,.0f}}<extra></extra>'
-            ))
+        fig_bar = go.Figure(go.Bar(
+            x=aset_values,
+            y=aset_labels,
+            orientation='h',
+            marker=dict(color=aset_colors, line=dict(width=0)),
+            hovertemplate='%{y}: Rp %{x:,.0f}<extra></extra>',
+            text=[f'Rp {v:,.0f}' for v in aset_values],
+            textposition='outside',
+            textfont=dict(color='#475569', size=9, family='Inter'),
+        ))
 
         fig_bar.update_layout(
-            title=dict(text='Komposisi Aset Nasabah', font=dict(size=11, color='#475569', family='Inter'), x=0),
-            barmode='group',
+            title=dict(
+                text='Komposisi Aset Nasabah',
+                font=dict(size=11, color='#475569', family='Inter'),
+                x=0
+            ),
             height=210,
-            margin=dict(t=32, b=10, l=10, r=10),
+            margin=dict(t=32, b=10, l=10, r=80),
             paper_bgcolor='rgba(0,0,0,0)',
             plot_bgcolor='rgba(0,0,0,0)',
-            xaxis=dict(showgrid=False, showticklabels=False, zeroline=False),
-            yaxis=dict(tickfont=dict(color='#64748B', size=10, family='Inter'), tickcolor='transparent'),
+            xaxis=dict(showgrid=False, showticklabels=False, zeroline=False, visible=False),
+            yaxis=dict(tickfont=dict(color='#64748B', size=10, family='Inter'), ticklen=0),
             showlegend=False,
-            bargap=0.3,
         )
         st.plotly_chart(fig_bar, use_container_width=True, config={"displayModeBar": False})
 
